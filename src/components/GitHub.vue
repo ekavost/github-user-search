@@ -1,4 +1,6 @@
 <script setup>
+import TheCard from './TheCard.vue';
+import TheForm from './TheForm.vue';
 import GitHubRepo from './GitHubRepo.vue';
 import { ref, reactive } from 'vue';
 
@@ -52,54 +54,27 @@ const count = ref(0);
 </script>
 
 <template>
-  <div class="mx-auto w-50">
-    <!-- Input -->
-    <form class="input-group mb-3">
-      <input
-        v-model.trim="user.name"
-        @keypress.enter.prevent="getUser"
-        :disabled="disableInput"
-        type="text"
-        class="form-control"
-        placeholder="Introduce el nombre de usuario de GitHub"
-      />
-      <button @click="getUser" class="btn btn-outline-secondary" type="button" id="btn-search">
-        Buscar
-      </button>
-    </form>
+  <div class="container">
+    <!-- Form -->
+    <the-form :user="user" @get-user="getUser"></the-form>
     <!-- Error -->
     <div v-if="errorOn" class="alert alert-warning" role="alert">{{ errorMessage }}</div>
   </div>
+
   <div class="d-flex justify-content-center align-items-start gap-5 mt-5">
     <!-- User Card -->
-    <div v-if="user.userExists" class="iserinfo">
-      <div class="card row mx-auto">
-        <img class="card-img-top" :src="user.urlAvatar" alt="avatar" />
-        <div class="card-body">
-          <h4 class="card-title">{{ user.name }}</h4>
-          <div class="d-flex justify-content-between align-items-end">
-            <button @click="getRepos" type="button" class="btn btn-primary">Repositorios</button>
-            <a :href="user.urlUser" class="card-text" target="_blank">URL de GitHub</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <the-card :user="user" @get-repos="getRepos"></the-card>
+
     <!-- User repos     -->
     <div v-if="showRepos" class="w-100">
-      <GitHubRepo
+      <git-hub-repo
         v-for="r in user.repos"
         :key="r.id"
         :repo-name="r.full_name"
         :url-repo="r.html_url"
         :description="r.description"
         :forks-count="r.forks_count"
-      />
+      ></git-hub-repo>
     </div>
   </div>
 </template>
-
-<style scoped>
-.card.row {
-  width: 25rem;
-}
-</style>
