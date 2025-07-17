@@ -61,7 +61,7 @@ const count = ref(0);
     <div v-if="errorOn" class="alert alert-warning" role="alert">{{ errorMessage }}</div>
   </div>
 
-  <div class="d-flex justify-content-center align-items-start gap-5 mt-5">
+  <div class="container d-flex justify-content-center align-items-start gap-5 mt-5">
     <!-- User Card -->
     <the-card :user="user" @get-repos="getRepos"></the-card>
 
