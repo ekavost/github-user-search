@@ -4,7 +4,7 @@ defineProps(['user']);
 const emit = defineEmits(['getUser']);
 </script>
 <template>
-  <div class="card px-4 mx-auto">
+  <div class="card px-4">
     <div class="container card-body d-flex flex-column">
       <h4 class="card-title">{{ $t('formTitle') }}</h4>
       <p class="card-text">{{ $t('formSubtitle') }}</p>
@@ -33,7 +33,7 @@ const emit = defineEmits(['getUser']);
         />
       </div>
 
-      <button @click="getUser" class="btn mt-4" type="button" id="btn-search">
+      <button @click="$emit('getUser')" class="btn mt-4" type="button">
         {{ $t('btnSearch') }}
       </button>
     </div>
@@ -42,7 +42,6 @@ const emit = defineEmits(['getUser']);
 
 <style scoped>
 .card {
-  max-width: 600px;
   border-color: #ebebeaff;
   box-shadow: 0px 0px 1px #171a1f12, 0px 0px 2px #171a1f1f;
 }
@@ -53,5 +52,14 @@ button {
   background-color: #ff9c2bff;
   color: white;
   font-weight: 600;
+}
+button:hover {
+  background-color: #fdaa4b;
+  color: white;
+}
+
+button:active {
+  color: #ff9c2bff !important;
+  border: 2px solid #ff9c2bff;
 }
 </style>

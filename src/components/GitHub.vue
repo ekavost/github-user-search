@@ -54,11 +54,11 @@ const count = ref(0);
 </script>
 
 <template>
-  <div>
+  <div class="mx-auto" style="max-width: 600px">
     <!-- Form -->
     <the-form :user="user" @get-user="getUser"></the-form>
     <!-- Error -->
-    <div v-if="errorOn" class="alert alert-warning" role="alert">{{ errorMessage }}</div>
+    <div v-if="errorOn" class="alert alert-warning mt-2" role="alert">{{ errorMessage }}</div>
   </div>
 
   <div class="d-flex justify-content-center align-items-start gap-5">
