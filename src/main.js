@@ -1,5 +1,4 @@
-// import './style.css';
-
+import '../style.css';
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
 import App from './App.vue';
@@ -13,7 +12,7 @@ const i18n = createI18n({
       formTitle: 'Find GitHub Users',
       formSubtitle: 'Discover profiles, repositories, and more with a simple search',
       inputPlaceholder: 'Introduce the username',
-      btnSearch: 'Search User',
+      btnSearch: 'Search',
       btnRepos: 'Show Repos',
       linkUrl: 'Go to GitHub',
     },
@@ -21,7 +20,7 @@ const i18n = createI18n({
       formTitle: 'Encuentra Usuarios de GitHub',
       formSubtitle: 'Discubre cuentas, repositorios y más con una simple búsqueda',
       inputPlaceholder: 'Introduce el nombre de usuario',
-      btnSearch: 'Buscar usuario',
+      btnSearch: 'Buscar',
       btnRepos: 'Ver repositorios',
       linkUrl: 'Ir a GitHub',
     },
@@ -29,7 +28,7 @@ const i18n = createI18n({
       formTitle: 'Искать пользователей GitHub',
       formSubtitle: 'Находи профили, репозитории и другую информацию в один клик',
       inputPlaceholder: 'Введите имя пользователя',
-      btnSearch: 'Искать пользователя',
+      btnSearch: 'Искать',
       btnRepos: 'Показать репозитории',
       linkUrl: 'Перейти на GitHub',
     },

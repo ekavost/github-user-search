@@ -8,9 +8,15 @@ const { t, locale, availableLocales } = useI18n({ useScope: 'global' });
 </script>
 
 <template>
-  <TheHeader />
-  <main class="my-5">
-    <GitHub />
-  </main>
-  <TheFooter />
+  <div class="container d-flex flex-column justify-content-between px-0">
+    <header>
+      <TheHeader />
+    </header>
+    <main class="my-5">
+      <GitHub />
+    </main>
+    <footer class="mt-auto">
+      <TheFooter />
+    </footer>
+  </div>
 </template>
