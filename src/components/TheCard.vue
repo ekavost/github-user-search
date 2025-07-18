@@ -12,9 +12,9 @@ defineEmits(['getRepos']);
         <h4 class="card-title">{{ user.name }}</h4>
         <div class="d-flex justify-content-between align-items-end">
           <button @click="$emit('getRepos')" type="button" class="btn btn-primary">
-            Repositorios
+            {{ $t('btnRepos') }}
           </button>
-          <a :href="user.urlUser" class="card-text" target="_blank">URL de GitHub</a>
+          <a :href="user.urlUser" class="card-text" target="_blank">{{ $t('linkUrl') }}</a>
         </div>
       </div>
     </div>
