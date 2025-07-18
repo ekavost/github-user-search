@@ -55,26 +55,28 @@ const count = ref(0);
 
 <template>
   <div class="container">
-    <!-- Form -->
-    <the-form :user="user" @get-user="getUser"></the-form>
-    <!-- Error -->
-    <div v-if="errorOn" class="alert alert-warning" role="alert">{{ errorMessage }}</div>
-  </div>
+    <div>
+      <!-- Form -->
+      <the-form :user="user" @get-user="getUser"></the-form>
+      <!-- Error -->
+      <div v-if="errorOn" class="alert alert-warning" role="alert">{{ errorMessage }}</div>
+    </div>
 
-  <div class="container d-flex justify-content-center align-items-start gap-5 mt-5">
-    <!-- User Card -->
-    <the-card :user="user" @get-repos="getRepos"></the-card>
+    <div class="d-flex justify-content-center align-items-start gap-5">
+      <!-- User Card -->
+      <the-card :user="user" @get-repos="getRepos"></the-card>
 
-    <!-- User repos     -->
-    <div v-if="showRepos" class="w-100">
-      <git-hub-repo
-        v-for="r in user.repos"
-        :key="r.id"
-        :repo-name="r.full_name"
-        :url-repo="r.html_url"
-        :description="r.description"
-        :forks-count="r.forks_count"
-      ></git-hub-repo>
+      <!-- User repos     -->
+      <div v-if="showRepos">
+        <git-hub-repo
+          v-for="r in user.repos"
+          :key="r.id"
+          :repo-name="r.full_name"
+          :url-repo="r.html_url"
+          :description="r.description"
+          :forks-count="r.forks_count"
+        ></git-hub-repo>
+      </div>
     </div>
   </div>
 </template>
