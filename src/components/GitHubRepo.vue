@@ -1,5 +1,5 @@
 <template>
-  <table class="table table-hover">
+  <table class="table table-hover table-responsive table-sm mx-auto my-3">
     <thead>
       <tr>
         <th scope="col">{{ $t('reposTableRepos') }}</th>

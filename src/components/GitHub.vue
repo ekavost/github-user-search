@@ -75,7 +75,7 @@ const count = ref(0);
   </section>
 
   <section>
-    <div class="d-flex flex-column gap-3">
+    <div>
       <!-- User Card -->
       <the-card :user="user" @get-repos="getRepos"></the-card>
 
