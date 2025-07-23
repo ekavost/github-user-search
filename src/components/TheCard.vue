@@ -14,29 +14,35 @@ const formattedDate = computed(() => {
   <Transition :duration="550" name="polaroid">
     <div v-if="user.userExists" class="width-600 card container mx-auto px-2 py-3">
       <div class="row">
-        <img class="col avatar" :src="user.urlAvatar" alt="user-avatar" />
-        <div class="col d-flex flex-column">
-          <h2 class="card-title">@{{ user.login }}</h2>
-          <p v-show="user.name" class="text-secondary">{{ user.name }}</p>
-          <div class="mt-auto">
-            <button @click="$emit('getRepos')" type="button" class="btn btn-sm">
-              {{ $t('btnRepos') }}
-            </button>
-          </div>
+        <div class="col-4">
+          <img style="max-width: 100%" :src="user.urlAvatar" alt="user-avatar" />
         </div>
-        <div class="col text-end d-flex flex-column me-3">
-          <span class="font-smaller text-secondary">
-            {{
-              $i18n.locale === 'English'
-                ? 'Since'
-                : $i18n.locale === 'Español'
-                ? 'Desde'
-                : 'Начиная с'
-            }}
-            <i>{{ formattedDate }}</i>
-          </span>
-          <div v-show="user.hireable" class="mt-auto">
-            <span class="tag px-2 py-1 rounded-5">{{ $t('hireable') }}</span>
+        <div class="col-8">
+          <div class="d-flex flex-column" style="height: 100%">
+            <div class="mb-auto">
+              <h2 class="card-title">@{{ user.login }}</h2>
+              <p v-show="user.name" class="text-secondary">{{ user.name }}</p>
+              <span class="font-smaller text-secondary">
+                ({{
+                  $i18n.locale === 'English'
+                    ? 'Since'
+                    : $i18n.locale === 'Español'
+                    ? 'Desde'
+                    : 'Начиная с'
+                }}
+                <i>{{ formattedDate }}</i
+                >)
+              </span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button @click="$emit('getRepos')" type="button" class="btn btn-sm">
+                {{ $t('btnRepos') }}
+              </button>
+              <div v-show="user.hireable" class="text-center">
+                <span class="tag px-2 py-1 me-2 rounded-5">{{ $t('hireable') }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -109,11 +115,6 @@ const formattedDate = computed(() => {
   background-color: rgb(151, 197, 87);
   font-size: 0.7rem;
   font-weight: 600;
-}
-
-.avatar {
-  max-width: 150px;
-  height: max-content;
 }
 
 .font-smaller {
