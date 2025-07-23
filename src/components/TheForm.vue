@@ -1,6 +1,6 @@
 <script setup>
-import { defineEmits, defineProps } from 'vue';
-defineProps(['user']);
+// import { defineEmits, defineProps } from 'vue';
+defineProps(['user', 'disableInput']);
 const emit = defineEmits(['getUser']);
 </script>
 <template>
@@ -24,7 +24,7 @@ const emit = defineEmits(['getUser']);
           </svg>
         </span>
         <input
-          v-model.trim="user.name"
+          v-model.trim="user.login"
           @keypress.enter.prevent="$emit('getUser')"
           :disabled="disableInput"
           type="text"
@@ -41,10 +41,6 @@ const emit = defineEmits(['getUser']);
 </template>
 
 <style scoped>
-.card {
-  border-color: #ebebeaff;
-  box-shadow: 0px 0px 1px #171a1f12, 0px 0px 2px #171a1f1f;
-}
 p.card-text {
   color: #8c8d8bff;
 }

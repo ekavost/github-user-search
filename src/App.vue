@@ -9,7 +9,7 @@ const { t, locale, availableLocales } = useI18n({ useScope: 'global' });
 
 <template>
   <div class="container d-flex flex-column justify-content-between px-0">
-    <header>
+    <header class="mx-auto">
       <TheHeader />
     </header>
     <main class="my-5">

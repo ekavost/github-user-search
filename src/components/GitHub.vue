@@ -6,9 +6,14 @@ import { ref, reactive } from 'vue';
 
 const urlApi = ref('https://api.github.com/users/');
 const user = reactive({
+  login: '',
   name: '',
   urlAvatar: '',
   urlUser: '',
+  hireable: null,
+  createdDate: '',
+  email: null,
+  twitter: null,
   userExists: false,
   repos: [],
 });
@@ -21,12 +26,17 @@ const showRepos = ref(false);
 async function getUser() {
   showRepos.value = false;
   disableInput.value = true;
-  const response = await fetch(urlApi.value + user.name);
+  const response = await fetch(urlApi.value + user.login);
   if (response.ok) {
     let data = await response.json();
-    user.name = data.login;
+    user.login = data.login;
+    user.name = data.name;
     user.urlAvatar = data.avatar_url;
     user.urlUser = data.html_url;
+    user.hireable = data.hireable;
+    user.createdDate = data.created_at;
+    user.email = data.email;
+    user.twitter = data.twitter_username;
     errorOn.value = false;
     user.userExists = true;
   } else {
@@ -38,7 +48,7 @@ async function getUser() {
 }
 
 async function getRepos() {
-  const response = await fetch(urlApi.value + user.name + '/repos');
+  const response = await fetch(urlApi.value + user.login + '/repos');
   if (response.ok) {
     user.repos = await response.json();
     if (user.repos.length > 0) {
@@ -54,27 +64,27 @@ const count = ref(0);
 </script>
 
 <template>
-  <div class="mx-auto" style="max-width: 600px">
+  <section>
     <!-- Form -->
-    <the-form :user="user" @get-user="getUser"></the-form>
-    <!-- Error -->
-    <div v-if="errorOn" class="alert alert-warning mt-2" role="alert">{{ errorMessage }}</div>
-  </div>
-
-  <div class="d-flex justify-content-center align-items-start gap-5">
-    <!-- User Card -->
-    <the-card :user="user" @get-repos="getRepos"></the-card>
-
-    <!-- User repos     -->
-    <div v-if="showRepos">
-      <git-hub-repo
-        v-for="r in user.repos"
-        :key="r.id"
-        :repo-name="r.full_name"
-        :url-repo="r.html_url"
-        :description="r.description"
-        :forks-count="r.forks_count"
-      ></git-hub-repo>
+    <div class="width-600 mx-auto mb-5">
+      <!-- Form -->
+      <the-form :user="user" @get-user="getUser"></the-form>
+      <!-- Error -->
+      <div v-if="errorOn" class="alert alert-warning mt-2" role="alert">{{ errorMessage }}</div>
     </div>
-  </div>
+  </section>
+
+  <section>
+    <div class="d-flex flex-column gap-3">
+      <!-- User Card -->
+      <the-card :user="user" @get-repos="getRepos"></the-card>
+
+      <!-- User repos     -->
+      <div v-if="showRepos">
+        <git-hub-repo :repos="user.repos"></git-hub-repo>
+      </div>
+    </div>
+  </section>
 </template>
+
+<style scoped></style>
