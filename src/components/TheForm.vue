@@ -1,5 +1,4 @@
 <script setup>
-// import { defineEmits, defineProps } from 'vue';
 defineProps(['user', 'disableInput']);
 const emit = defineEmits(['getUser']);
 </script>
