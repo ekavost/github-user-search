@@ -23,9 +23,18 @@
         <td>{{ formattedDate(repo) }}</td>
         <td>{{ repo.language }}</td>
         <td>
-          <a :href="ghPagesLink(repo)" target="_blank" rel="noopener noreferrer">{{
+          <!-- <a :href="ghPagesLink(repo)" target="_blank" rel="noopener noreferrer">{{
             ghPagesLink(repo)
-          }}</a>
+          }}</a> -->
+          <a
+            v-if="repo.has_pages"
+            :href="ghPagesUrl(repo)"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ ghPagesUrl(repo) }}
+          </a>
+          <span v-else>-</span>
         </td>
         <td>{{ repo.forks_count }}</td>
       </tr>
@@ -41,7 +50,7 @@ const formattedDate = (repo) => {
   return date.toLocaleDateString();
 };
 
-const ghPagesLink = (repo) => {
-  return repo.has_pages ? `https://${repo.owner.login}.github.io/${repo.name}` : '-';
+const ghPagesUrl = (repo) => {
+  return `https://${repo.owner.login}.github.io/${repo.name}`;
 };
 </script>
