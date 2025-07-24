@@ -1,15 +1,3 @@
-<script setup>
-import { computed } from 'vue';
-
-const props = defineProps(['user']);
-defineEmits(['getRepos']);
-
-const formattedDate = computed(() => {
-  const date = new Date(Date.parse(props.user.createdDate));
-  return date.toLocaleDateString();
-});
-</script>
-
 <template>
   <Transition :duration="550" name="polaroid">
     <div v-if="user.userExists" class="width-600 card container mx-auto px-2 py-3">
@@ -35,7 +23,7 @@ const formattedDate = computed(() => {
       </div>
       <hr />
 
-      <div class="row d-flex flex-row text-orange">
+      <div class="row d-flex flex-row text-primary">
         <div class="col">
           <div v-if="user.email">
             <a href="mailto:{{ user.email }}">@ {{ user.email }}</a>
@@ -88,6 +76,18 @@ const formattedDate = computed(() => {
   </Transition>
 </template>
 
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps(['user']);
+defineEmits(['getRepos']);
+
+const formattedDate = computed(() => {
+  const date = new Date(Date.parse(props.user.createdDate));
+  return date.toLocaleDateString();
+});
+</script>
+
 <style scoped>
 .card.row {
   width: 25rem;
@@ -105,31 +105,31 @@ const formattedDate = computed(() => {
 
 .tag {
   color: white;
-  background-color: rgb(151, 197, 87);
-  font-size: 0.7rem;
-  font-weight: 600;
+  background-color: var(--color-secondary);
+  font-size: var(--font-xs);
+  font-weight: var(--font-bolder);
 }
 
 .font-smaller {
-  font-size: 0.8rem;
+  font-size: var(--font-xs);
 }
 
-.text-orange,
-.text-orange a {
-  color: #ff9c2bff;
+.text-primary,
+.text-primary a {
+  color: var(--color-primary) !important;
 }
 
 button {
-  color: #ff9c2bff !important;
-  border: 1px solid #ff9c2bff;
+  color: var(--color-primary) !important;
+  border: var(--border-primary-thin);
 }
 button:hover {
-  font-weight: 600;
-  border: 1px solid #ff9c2bff;
+  font-weight: var(--font-bolder);
+  border: var(--border-primary-thin);
 }
 
 button:active {
-  border: 2px solid #ff9c2bff;
+  border: var(--border-primary-thick);
 }
 a:hover {
   text-decoration: underline;

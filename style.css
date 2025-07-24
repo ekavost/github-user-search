@@ -1,8 +1,33 @@
+:root {
+  /* Color */
+  --color-primary: #ff9c2bff;
+  --color-primary-light: #fdaa4b;
+  --color-secondary: #97c557;
+  --color-grey: #8c8d8bff;
+  --color-grey-light-bg: #f8f9fa;
+  --color-grey-light-border: #ebebeaff;
+
+  /* Font */
+  --font-family-title: 'Poppins', sans-serif;
+  --font-family-text: 'Montserrat', sans-serif;
+
+  --font-sm: 0.8rem;
+  --font-xs: 0.7rem;
+
+  --font-semi-bold: 550;
+  --font-bolder: 600;
+  --font-bold: 700;
+
+  /* Border */
+  --border-primary-thin: 1px solid var(--color-primary);
+  --border-primary-thick: 2px solid var(--color-primary);
+}
+
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-family-text);
 }
 body {
-  background-color: #f8f9fa;
+  background-color: var(--color-grey-light-bg);
 }
 #app > div {
   min-height: 100vh;
@@ -11,20 +36,20 @@ a {
   text-decoration: none;
 }
 a:hover {
-  font-weight: 500;
+  font-weight: var(--font-semi-bold);
 }
 a:active {
-  font-weight: 600;
+  font-weight: var(--font-bolder);
 }
 h4,
 .card-title {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
+  font-family: var(--font-family-title);
+  font-weight: var(--font-bold);
   font-style: normal;
 }
 
 .card {
-  border-color: #ebebeaff;
+  border-color: var(--color-grey-light-border);
   box-shadow: 0px 0px 1px #171a1f12, 0px 0px 2px #171a1f1f;
 }
 

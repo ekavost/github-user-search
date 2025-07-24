@@ -23,9 +23,6 @@
         <td>{{ formattedDate(repo) }}</td>
         <td>{{ repo.language }}</td>
         <td>
-          <!-- <a :href="ghPagesLink(repo)" target="_blank" rel="noopener noreferrer">{{
-            ghPagesLink(repo)
-          }}</a> -->
           <a
             v-if="repo.has_pages"
             :href="ghPagesUrl(repo)"

@@ -1,7 +1,3 @@
-<script setup>
-defineProps(['user', 'disableInput']);
-const emit = defineEmits(['getUser']);
-</script>
 <template>
   <div class="card px-4">
     <div class="container card-body d-flex flex-column">
@@ -39,22 +35,27 @@ const emit = defineEmits(['getUser']);
   </div>
 </template>
 
+<script setup>
+defineProps(['user', 'disableInput']);
+const emit = defineEmits(['getUser']);
+</script>
+
 <style scoped>
 p.card-text {
-  color: #8c8d8bff;
+  color: var(--color-grey);
 }
 button {
-  background-color: #ff9c2bff;
+  background-color: var(--color-primary);
   color: white;
-  font-weight: 600;
+  font-weight: var(--font-bolder);
 }
 button:hover {
-  background-color: #fdaa4b;
+  background-color: var(--color-primary-light);
   color: white;
 }
 
 button:active {
-  color: #ff9c2bff !important;
-  border: 2px solid #ff9c2bff;
+  color: var(--color-primary) !important;
+  border: var(--border-primary-thick);
 }
 </style>

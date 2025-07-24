@@ -1,3 +1,29 @@
+<template>
+  <section>
+    <!-- Form -->
+    <div class="width-600 mx-auto mb-5">
+      <!-- Form -->
+      <the-form :user="user" @get-user="getUser"></the-form>
+      <!-- Error -->
+      <div v-if="errorOn" class="alert alert-warning mt-2" role="alert">
+        {{ errorMessage === 'no-repos' ? $t('warnMessage.noRepos') : $t('warnMessage.noUser') }}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <!-- User Card -->
+      <the-card :user="user" @get-repos="getRepos"></the-card>
+
+      <!-- User repos     -->
+      <div v-if="showRepos">
+        <git-hub-repo :repos="user.repos"></git-hub-repo>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script setup>
 import TheCard from './TheCard.vue';
 import TheForm from './TheForm.vue';
@@ -62,31 +88,3 @@ async function getRepos() {
 
 const count = ref(0);
 </script>
-
-<template>
-  <section>
-    <!-- Form -->
-    <div class="width-600 mx-auto mb-5">
-      <!-- Form -->
-      <the-form :user="user" @get-user="getUser"></the-form>
-      <!-- Error -->
-      <div v-if="errorOn" class="alert alert-warning mt-2" role="alert">
-        {{ errorMessage === 'no-repos' ? $t('warnMessage.noRepos') : $t('warnMessage.noUser') }}
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div>
-      <!-- User Card -->
-      <the-card :user="user" @get-repos="getRepos"></the-card>
-
-      <!-- User repos     -->
-      <div v-if="showRepos">
-        <git-hub-repo :repos="user.repos"></git-hub-repo>
-      </div>
-    </div>
-  </section>
-</template>
-
-<style scoped></style>
