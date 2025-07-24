@@ -1,0 +1,22 @@
+{
+  "form": {
+    "title": "Encuentra Usuarios de GitHub",
+    "subtitle": "Discubre cuentas, repositorios y más con una simple búsqueda",
+    "inputPlaceholder": "Introduce el nombre de usuario",
+    "btnSearch": "Buscar"
+  },
+  "userCard": {
+    "btnRepos": "Ver repositorios",
+    "hireable": "Disponible para contratar",
+    "since": "Desde "
+  },
+  "reposTable": {
+    "reposName": "Repositorios",
+    "lastUpdate": "Última actualización",
+    "primeLang": "Lenguaje principal"
+  },
+  "warnMessage": {
+    "noRepos": "Usuario no tiene repositorios",
+    "noUser": "Usuario no existe"
+  }
+}

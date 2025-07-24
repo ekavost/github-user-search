@@ -40,7 +40,7 @@ async function getUser() {
     errorOn.value = false;
     user.userExists = true;
   } else {
-    errorMessage.value = 'El usuario no existe';
+    errorMessage.value = 'no-user';
     errorOn.value = true;
     user.userExists = false;
   }
@@ -55,7 +55,7 @@ async function getRepos() {
       showRepos.value = true;
     } else {
       errorOn.value = true;
-      errorMessage.value = 'El usuario no tiene repositorios';
+      errorMessage.value = 'no-repos';
     }
   }
 }
@@ -70,7 +70,9 @@ const count = ref(0);
       <!-- Form -->
       <the-form :user="user" @get-user="getUser"></the-form>
       <!-- Error -->
-      <div v-if="errorOn" class="alert alert-warning mt-2" role="alert">{{ errorMessage }}</div>
+      <div v-if="errorOn" class="alert alert-warning mt-2" role="alert">
+        {{ errorMessage === 'no-repos' ? $t('warnMessage.noRepos') : $t('warnMessage.noUser') }}
+      </div>
     </div>
   </section>
 

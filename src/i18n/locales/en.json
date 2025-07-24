@@ -1,0 +1,22 @@
+{
+  "form": {
+    "title": "Find GitHub Users",
+    "subtitle": "Discover profiles, repositories, and more with a simple search",
+    "inputPlaceholder": "Introduce the username",
+    "btnSearch": "Search"
+  },
+  "userCard": {
+    "btnRepos": "Show Repos",
+    "hireable": "Available for hire",
+    "since": "Since "
+  },
+  "reposTable": {
+    "reposName": "Repositories",
+    "lastUpdate": "Last Update",
+    "primeLang": "Primary Language"
+  },
+  "warnMessage": {
+    "noRepos": "User does not have repositories",
+    "noUser": "User does not exist"
+  }
+}
