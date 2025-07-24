@@ -2,9 +2,9 @@
   <table class="table table-hover table-responsive table-sm mx-auto my-3">
     <thead>
       <tr>
-        <th scope="col">{{ $t('reposTableRepos') }}</th>
-        <th scope="col">{{ $t('reposTableUpdate') }}</th>
-        <th scope="col">{{ $t('reposTableLang') }}</th>
+        <th scope="col">{{ $t('reposTable.reposName') }}</th>
+        <th scope="col">{{ $t('reposTable.lastUpdate') }}</th>
+        <th scope="col">{{ $t('reposTable.primeLang') }}</th>
         <th scope="col">gh-pages</th>
         <th scope="col">forks</th>
       </tr>

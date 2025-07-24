@@ -23,19 +23,12 @@ const formattedDate = computed(() => {
               <h3 class="card-title">@{{ user.login }}</h3>
               <p v-show="user.name" class="mb-0">{{ user.name }}</p>
               <span class="font-smaller text-secondary">
-                ({{
-                  $i18n.locale === 'English'
-                    ? 'Since'
-                    : $i18n.locale === 'Español'
-                    ? 'Desde'
-                    : 'Начиная с'
-                }}
-                <i>{{ formattedDate }}</i
+                ({{ $t('userCard.since') }} <i>{{ formattedDate }}</i
                 >)
               </span>
             </div>
             <button @click="$emit('getRepos')" type="button" class="btn btn me-3 mt-auto">
-              {{ $t('btnRepos') }}
+              {{ $t('userCard.btnRepos') }}
             </button>
           </div>
         </div>
@@ -88,7 +81,7 @@ const formattedDate = computed(() => {
         </div>
 
         <div v-show="user.hireable">
-          <span class="tag px-2 py-1 me-2 rounded-5">{{ $t('hireable') }}</span>
+          <span class="tag px-2 py-1 me-2 rounded-5">{{ $t('userCard.hireable') }}</span>
         </div>
       </div>
     </div>

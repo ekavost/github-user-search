@@ -5,8 +5,8 @@ const emit = defineEmits(['getUser']);
 <template>
   <div class="card px-4">
     <div class="container card-body d-flex flex-column">
-      <h4 class="card-title">{{ $t('formTitle') }}</h4>
-      <p class="card-text">{{ $t('formSubtitle') }}</p>
+      <h4 class="card-title">{{ $t('form.title') }}</h4>
+      <p class="card-text">{{ $t('form.subtitle') }}</p>
       <form @submit.prevent="$emit('getUser')">
         <div class="input-group">
           <span class="input-group-text text-secondary">
@@ -28,11 +28,11 @@ const emit = defineEmits(['getUser']);
             :disabled="disableInput"
             type="text"
             class="form-control"
-            :placeholder="$t('inputPlaceholder')"
+            :placeholder="$t('form.inputPlaceholder')"
           />
         </div>
         <button class="btn mt-4 w-100" type="submit">
-          {{ $t('btnSearch') }}
+          {{ $t('form.btnSearch') }}
         </button>
       </form>
     </div>
