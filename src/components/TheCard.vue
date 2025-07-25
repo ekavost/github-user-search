@@ -26,7 +26,7 @@
       <div class="row d-flex flex-row text-primary">
         <div class="col">
           <div v-if="user.email">
-            <a href="mailto:{{ user.email }}">@ {{ user.email }}</a>
+            <a :href="`mailto:${user.email}`">@ {{ user.email }}</a>
           </div>
           <div v-if="user.twitter">
             <svg

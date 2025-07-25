@@ -14,7 +14,7 @@
   <section>
     <div>
       <!-- User Card -->
-      <the-card :user="user" @get-repos="getRepos"></the-card>
+      <the-card ref="theCard" :user="user" @get-repos="getRepos"></the-card>
 
       <!-- User repos     -->
       <div v-if="showRepos">
@@ -28,7 +28,7 @@
 import TheCard from './TheCard.vue';
 import TheForm from './TheForm.vue';
 import GitHubRepo from './GitHubRepo.vue';
-import { ref, reactive } from 'vue';
+import { ref, reactive, nextTick } from 'vue';
 
 const urlApi = ref('https://api.github.com/users/');
 const user = reactive({
@@ -43,7 +43,7 @@ const user = reactive({
   userExists: false,
   repos: [],
 });
-
+const theCard = ref(null);
 const errorMessage = ref('');
 const errorOn = ref(false);
 const disableInput = ref(false);
@@ -78,7 +78,10 @@ async function getRepos() {
   if (response.ok) {
     user.repos = await response.json();
     if (user.repos.length > 0) {
+      errorOn.value = false;
       showRepos.value = true;
+      await nextTick();
+      scrollTo(theCard);
     } else {
       errorOn.value = true;
       errorMessage.value = 'no-repos';
@@ -86,5 +89,7 @@ async function getRepos() {
   }
 }
 
-const count = ref(0);
+function scrollTo(view) {
+  view.value?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 </script>
