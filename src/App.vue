@@ -12,7 +12,7 @@ import TheFooter from './components/TheFooter.vue';
     <header class="mx-auto">
       <TheHeader />
     </header>
-    <main class="my-5">
+    <main class="my-1 my-sm-4">
       <GitHub />
     </main>
     <footer class="mt-auto">
