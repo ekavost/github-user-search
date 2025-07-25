@@ -90,6 +90,6 @@ async function getRepos() {
 }
 
 function scrollTo(view) {
-  view.value?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  view.value?.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 </script>
