@@ -1,5 +1,5 @@
 <template>
-  <div class="card px-4">
+  <div class="card px-4" @keydown.enter="handleSubmit">
     <div class="container card-body d-flex flex-column">
       <h4 class="card-title">{{ $t('form.title') }}</h4>
       <p class="card-text">{{ $t('form.subtitle') }}</p>
@@ -21,13 +21,17 @@
           </span>
           <input
             ref="inputRef"
-            v-model.lazy.trim="user.login"
-            @focus="user.login = ''"
+            v-model.trim="localLogin"
+            @focus="localLogin = ''"
             :disabled="disableInput"
             type="text"
             class="form-control"
             :placeholder="$t('form.inputPlaceholder')"
+            list="searched-users"
           />
+          <datalist id="searched-users" v-if="localLogin.length > 1">
+            <option v-for="username in searchedUsers" :key="username" :value="username"></option>
+          </datalist>
         </div>
         <button class="btn mt-4 w-100" type="submit">
           {{ $t('form.btnSearch') }}
@@ -38,14 +42,25 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-defineProps(['user', 'disableInput']);
-const inputRef = ref(null);
-const handleSubmit = () => {
-  emit('getUser');
-  inputRef.value?.blur();
-};
+import { ref, onMounted } from 'vue';
+defineProps(['disableInput']);
 const emit = defineEmits(['getUser']);
+
+const inputRef = ref(null);
+const localLogin = ref('');
+const searchedUsers = ref([]);
+
+onMounted(() => {
+  const searches = localStorage.getItem('searchedUsers');
+  if (searches) {
+    searchedUsers.value = JSON.parse(searches);
+  }
+});
+const handleSubmit = () => {
+  emit('getUser', localLogin.value);
+  inputRef.value?.blur();
+  localLogin.value = '';
+};
 </script>
 
 <style scoped>
