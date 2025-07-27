@@ -1,6 +1,6 @@
 <template>
-  <Transition :duration="550" name="polaroid">
-    <div v-if="user.userExists" class="width-600 card container mx-auto px-2 py-3">
+  <Transition :duration="450" name="polaroid">
+    <div v-if="user.userExists" class="width-600 card container mx-auto p-3">
       <div class="row">
         <div class="col-5">
           <img style="max-width: 100%" :src="user.urlAvatar" alt="user-avatar" />
@@ -15,7 +15,7 @@
                 >)
               </span>
             </div>
-            <button @click="$emit('getRepos')" type="button" class="btn btn me-3 mt-auto">
+            <button @click="$emit('getRepos')" type="button" class="btn btn mt-auto">
               {{ $t('userCard.btnRepos') }}
             </button>
           </div>

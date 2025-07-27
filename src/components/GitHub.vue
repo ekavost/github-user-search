@@ -1,7 +1,7 @@
 <template>
   <section>
     <!-- Form -->
-    <div class="width-600 mx-auto mb-5">
+    <div class="width-600 mx-auto mb-2 mb-sm-4">
       <!-- Form -->
       <the-form :user="user" @get-user="getUser"></the-form>
       <!-- Error -->
@@ -14,7 +14,7 @@
   <section>
     <div>
       <!-- User Card -->
-      <the-card ref="theCard" :user="user" @get-repos="getRepos"></the-card>
+      <the-card ref="theCardEl" :user="user" @get-repos="getRepos"></the-card>
 
       <!-- User repos     -->
       <div v-if="showRepos">
@@ -43,7 +43,7 @@ const user = reactive({
   userExists: false,
   repos: [],
 });
-const theCard = ref(null);
+const theCardEl = ref(null);
 const errorMessage = ref('');
 const errorOn = ref(false);
 const disableInput = ref(false);
@@ -81,7 +81,7 @@ async function getRepos() {
       errorOn.value = false;
       showRepos.value = true;
       await nextTick();
-      scrollTo(theCard);
+      scrollTo(theCardEl);
     } else {
       errorOn.value = true;
       errorMessage.value = 'no-repos';

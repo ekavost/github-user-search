@@ -3,7 +3,7 @@
     <div class="container card-body d-flex flex-column">
       <h4 class="card-title">{{ $t('form.title') }}</h4>
       <p class="card-text">{{ $t('form.subtitle') }}</p>
-      <form @submit.prevent="$emit('getUser')">
+      <form @submit.prevent="handleSubmit">
         <div class="input-group">
           <span class="input-group-text text-secondary">
             <svg
@@ -20,7 +20,9 @@
             </svg>
           </span>
           <input
+            ref="inputRef"
             v-model.lazy.trim="user.login"
+            @focus="user.login = ''"
             :disabled="disableInput"
             type="text"
             class="form-control"
@@ -36,7 +38,13 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 defineProps(['user', 'disableInput']);
+const inputRef = ref(null);
+const handleSubmit = () => {
+  emit('getUser');
+  inputRef.value?.blur();
+};
 const emit = defineEmits(['getUser']);
 </script>
 
